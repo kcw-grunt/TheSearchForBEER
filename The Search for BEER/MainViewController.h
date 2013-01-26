@@ -7,8 +7,12 @@
 //
 
 #import "FlipsideViewController.h"
+#import "FTWCache.h"
+#import "NSString+MD5.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+
+
 
 - (IBAction)showInfo:(id)sender;
 
