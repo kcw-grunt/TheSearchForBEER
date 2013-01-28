@@ -21,10 +21,9 @@
         [returningArray addObject:categoryLabel];
     }
 
-//    NSSet *categorySet = [NSSet setWithArray:returningArray];
-//    NSMutableArray *array = [NSMutableArray arrayWithArray:[categorySet allObjects]];
-//    returningArray = array;
-//    NSLog(@"Returning Array: %@",returningArray.description);
+    NSSet *categorySet = [NSSet setWithArray:returningArray];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[categorySet allObjects]];
+    returningArray = array;
     return returningArray;
 }
 

@@ -11,8 +11,10 @@
 @implementation YTVideo
     
 @synthesize videoID;
+@synthesize rawID;
 @synthesize title;
 @synthesize videoDescription;
+@synthesize videoCommentsLink;
 @synthesize link;
 @synthesize thumblink;
 @synthesize thumbImage;

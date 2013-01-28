@@ -11,8 +11,10 @@
 @interface YTVideo : NSObject{
 
 NSString    *videoID;
+NSString    *rawID;
 NSString    *title;
 NSString    *videoDescription;
+NSString    *videoCommentsLink;
 NSString    *link;
 NSString    *thumblink;
 UIImage     *thumbImage;
@@ -27,8 +29,10 @@ NSDate      *videoPublishDate;
 }
 
 @property (nonatomic, copy) NSString    *videoID;
+@property (nonatomic, copy) NSString    *rawID;
 @property (nonatomic, copy) NSString    *title;
 @property (nonatomic, copy) NSString    *videoDescription;
+@property (nonatomic, copy) NSString    *videoCommentsLink;
 @property (nonatomic, copy) NSString    *link;
 @property (nonatomic, copy) NSString    *thumblink;
 @property (nonatomic, copy) UIImage     *thumbImage;
