@@ -60,7 +60,7 @@ NSMutableArray *videoCategories;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Challenge", @"Challenge");
+        self.title = NSLocalizedString(@"Bartab Challenge", @"Bartab Challenge");
 
     }
     return self;
@@ -210,6 +210,7 @@ NSMutableArray *videoCategories;
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:youTubeURL]];
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSLog(@"JSON:%@",json.description);
     videos = [[json objectForKey:@"feed"]valueForKeyPath:@"entry"];
     videoCategories = [[[json objectForKey:@"feed"]valueForKeyPath:@"entry.category"]valueForKeyPath:@"term"];
     videoCategories = [YTProcessing cleanCategories:videoCategories];
@@ -240,7 +241,8 @@ NSMutableArray *videoCategories;
                 //NSLog(@"Vid desc: %@",aVideo.videoDescription);
                 /// YouTube serves up a special mobile URL
                 /// Using it (index: 3) to improve preformance
-                aVideo.link = [[[[videos objectAtIndex:k]valueForKey:@"link"]objectAtIndex:3]valueForKey:@"href"];
+                aVideo.link = [[[[videos objectAtIndex:k]valueForKey:@"link"]objectAtIndex:0]valueForKey:@"href"];
+                aVideo.mobileLink = [[[[videos objectAtIndex:k]valueForKey:@"link"]objectAtIndex:2]valueForKey:@"href"];
                 aVideo.videosViewCounts = [[[videos objectAtIndex:k]valueForKey:@"yt$statistics"]valueForKeyPath:@"viewCount"];
                 aVideo.thumblink = [[[[videos objectAtIndex:k]valueForKeyPath:@"media$group.media$thumbnail"]objectAtIndex:3]valueForKey:@"url"];
                 //NSLog(@"video thumblink:%i %@",k,aVideo.thumblink);

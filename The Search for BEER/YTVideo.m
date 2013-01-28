@@ -16,6 +16,7 @@
 @synthesize videoDescription;
 @synthesize videoCommentsLink;
 @synthesize link;
+@synthesize mobileLink;
 @synthesize thumblink;
 @synthesize thumbImage;
 @synthesize thumbImageData;

@@ -16,6 +16,8 @@ NSString    *title;
 NSString    *videoDescription;
 NSString    *videoCommentsLink;
 NSString    *link;
+NSString    *mobileLink;
+    
 NSString    *thumblink;
 UIImage     *thumbImage;
 NSData      *thumbImageData;
@@ -34,6 +36,7 @@ NSDate      *videoPublishDate;
 @property (nonatomic, copy) NSString    *videoDescription;
 @property (nonatomic, copy) NSString    *videoCommentsLink;
 @property (nonatomic, copy) NSString    *link;
+@property (nonatomic, copy) NSString    *mobileLink;
 @property (nonatomic, copy) NSString    *thumblink;
 @property (nonatomic, copy) UIImage     *thumbImage;
 @property (nonatomic, copy) NSData      *thumbImageData;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YTVideo.h"
 #import "YTCommentsRSSParser.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface YTDetailViewController : UIViewController  <UIWebViewDelegate,UITextViewDelegate,commentsRSSParserDelegate,UITableViewDataSource,UITableViewDelegate>{
 
@@ -25,6 +26,8 @@
     UIWebView *mainWebView;
     NSString *ythtml;
     NSString *vidTitle;
+    
+    FBSession *session;
 }
 
 @property (nonatomic, retain) UIWebView *mainWebView;
@@ -40,5 +43,8 @@
 @property (nonatomic, retain) NSString *ythtml;
 @property (nonatomic, retain) NSString *vidTitle;
 @property (nonatomic, retain) YTVideo *entryDetail;
+
+@property (strong, nonatomic) FBSession *session;
+
 - (void)parseWithParserType;
 @end
