@@ -121,12 +121,23 @@
     fbLogo.image = [UIImage imageNamed:@"f_logo"];
     [fbFrameStatusView addSubview:fbLogo];
     
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 135, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:label];    
+    label.text = @"Share on Facebook";
+    label.textAlignment=NSTextAlignmentRight;
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:12];
+    
+    
         
     UIBarButtonItem *fbUser = [[UIBarButtonItem alloc] initWithCustomView:fbFrameStatusView];
     UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareYTonUserFBWallClick:)];
     UIBarButtonItem *flexspace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    NSArray *toolbarItems = [[NSArray alloc] initWithObjects:fbUser,flexspace2,compose, nil];
+    NSArray *toolbarItems = [[NSArray alloc] initWithObjects:fbUser,flexspace2,item,compose, nil];
     UIToolbar *shareToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 380, 320, 44)];
     shareToolbar.items = toolbarItems;
     shareToolbar.tintColor = [UIColor blackColor];
