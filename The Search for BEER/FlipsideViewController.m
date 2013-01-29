@@ -79,6 +79,20 @@
 
 #pragma mark - Actions
 
+
+-(void)_setFeedPreference:(id)sender{
+
+
+
+
+}
+
+-(void)logoutOfFB:(id)sender{
+
+
+
+
+}
 - (IBAction)done:(id)sender
 {
     [self.delegate flipsideViewControllerDidFinish:self];

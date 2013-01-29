@@ -99,17 +99,12 @@ NSMutableArray *videoCategories;
         
         
     }
-    
+        
+    //////////^/////////FB Blocks///////^//////////////
 
     
 
-    
-    ////////////////////FB Blocks//////////////////////
 
-    
-    sectionedVideos = [[NSMutableArray alloc] init];
-    videos = [[NSMutableArray alloc] init];
-    videoCategories = [[NSMutableArray alloc] init];
     
     _searchBarView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     _searchBarView.barStyle = UIBarStyleBlackTranslucent;
@@ -128,7 +123,7 @@ NSMutableArray *videoCategories;
     _tableView.rowHeight = 50;
     [self.view addSubview:_tableView];
     
-    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 396, 200, 15)];//(180, 440, 200, 15)];
+    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 396, 200, 15)];
     appNameLabel.font = [UIFont fontWithName:@"HandOfSean" size:11];
     appNameLabel.textColor = [UIColor whiteColor];
     appNameLabel.backgroundColor = [UIColor clearColor];
@@ -203,20 +198,25 @@ NSMutableArray *videoCategories;
 #pragma mark - Grab YT Data
 
 -(void)grabbingYouTubeResults:(NSString *)ytQuery{
-    
-    NSLog(@"vidCat 0:%@",videoCategories.description);    
+    videos = [[NSMutableArray alloc] init];
+    videoCategories = [[NSMutableArray alloc] init];
+    sectionedVideos = [[NSMutableArray alloc] init];
+
+    //NSLog(@"vidCat 0:%@",videoCategories.description);
     ////Default search of 'BEER' popluates the table.  An new query reloads the table.////
     NSString *youTubeURL = ytQuery;
     NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:youTubeURL]];
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSLog(@"Query:%@",ytQuery);
     NSLog(@"JSON:%@",json.description);
     videos = [[json objectForKey:@"feed"]valueForKeyPath:@"entry"];
+    
+    NSLog(@"Videos Count in grabbing: %i",videos.count);
     videoCategories = [[[json objectForKey:@"feed"]valueForKeyPath:@"entry.category"]valueForKeyPath:@"term"];
     videoCategories = [YTProcessing cleanCategories:videoCategories];
-    
-    [_tableView beginUpdates];
-    NSLog(@"vidCat 1:%@",videoCategories.description);
+    NSLog(@"Videos Categories Count in grabbing: %i",videoCategories.count);
+
     for (int i=0; i< videoCategories.count;i++) {
         
         NSString *videoSectionTitleString = [videoCategories objectAtIndex:i];
@@ -235,6 +235,8 @@ NSMutableArray *videoCategories;
                 NSArray *videoIDComponents = [aVideo.videoID componentsSeparatedByString: @"/"];
                 aVideo.rawID = [videoIDComponents objectAtIndex:6];
                 aVideo.title = [[[videos objectAtIndex:k]valueForKey:@"title"]valueForKeyPath:@"$t"];
+                NSLog(@"Vid Ttile: %@",aVideo.title);
+
                 aVideo.videoCategory = entryCat;
                 aVideo.videoDescription = [[[videos objectAtIndex:k]valueForKeyPath:@"media$group.media$description"]valueForKey:@"$t"];
                 aVideo.videoCommentsLink =[[videos objectAtIndex:k]valueForKeyPath:@"gd$comments.gd$feedLink.href"];
@@ -245,22 +247,24 @@ NSMutableArray *videoCategories;
                 aVideo.mobileLink = [[[[videos objectAtIndex:k]valueForKey:@"link"]objectAtIndex:2]valueForKey:@"href"];
                 aVideo.videosViewCounts = [[[videos objectAtIndex:k]valueForKey:@"yt$statistics"]valueForKeyPath:@"viewCount"];
                 aVideo.thumblink = [[[[videos objectAtIndex:k]valueForKeyPath:@"media$group.media$thumbnail"]objectAtIndex:3]valueForKey:@"url"];
-                //NSLog(@"video thumblink:%i %@",k,aVideo.thumblink);
+               // NSLog(@"video thumblink:%i %@",k,aVideo.thumblink);
                 [newSectionArray addObject:aVideo];
+                
+                NSLog(@"newSectionArray: %i Video title:%@",k,aVideo.title);
             }
 
         }
-        NSLog(@"newSectionArray:%@",newSectionArray.description);
+        NSLog(@"newSectionArray Count:%i",newSectionArray.count);
         [sectionedVideos addObject:newSectionArray];
-        
-        //
-//        //[_tableView reloadRowsAtIndexPaths:[NSArray arrayWithArray:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        [self._tableView reloadRowsAtIndexPaths:[NSArray arrayWithArray:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        newSectionArray=nil;
+        NSLog(@"sectionedVide Count:%i",sectionedVideos.count);
+
        
     }
-    
-    [_tableView reloadData];
-    [_tableView endUpdates];
+   //[_tableView beginUpdates];
+
+     //[_tableView endUpdates];
+
 }
 
 #pragma mark - Search Bar Methods
@@ -269,12 +273,27 @@ NSMutableArray *videoCategories;
     [searchBar resignFirstResponder];
 }
 
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+
+    NSLog(@"Click");
+    videos = nil;
+     videoCategories =nil;
+    sectionedVideos =nil;
+    [_tableView reloadData];
+    
+
+}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
     NSLog(@"Search Text:%@",searchBar.text);
     NSString *q = searchBar.text;
     NSString *qNewSearch =[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/videos?q=%@&max-results=50&alt=json",q];
+    
+    NSLog(@"New Query:%@",qNewSearch);
     [self grabbingYouTubeResults:qNewSearch];
+    [_tableView reloadData];
+
     [searchBar resignFirstResponder];
 }
 
@@ -282,15 +301,11 @@ NSMutableArray *videoCategories;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"VideoCategories Count:%i",[videoCategories count]);
     return [videoCategories count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *categoryTitle;
-    categoryTitle = [videoCategories objectAtIndex:section];
-    NSLog(@"Category Title:%@",categoryTitle);
-    return categoryTitle;
+    return [videoCategories objectAtIndex:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -303,9 +318,7 @@ NSMutableArray *videoCategories;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSMutableArray *videosInSection = [sectionedVideos objectAtIndex:section];
-    NSLog(@"videoInSection Count:%i",[videosInSection count]);
-    return [videosInSection count];
+    return [[sectionedVideos objectAtIndex:section] count];
 }
 
 
@@ -316,7 +329,7 @@ NSMutableArray *videoCategories;
         static NSUInteger const kVideoDescriptionTag = 3; 
         static NSString *kYTVideosCellID = @"YTVideosCellID";
     
-        YTVideo *cellVideoData;
+        YTVideo *cellVideoData=nil;
         UIImageView *videoImageThumb;
         UILabel *videoTitle = nil;
         UILabel *videoDescription = nil;
@@ -355,8 +368,7 @@ NSMutableArray *videoCategories;
     
     /////////////Locating and filling the YTVideo with per the categories array  and or the videos within//////////
 
-    NSMutableArray *videosInSection = [sectionedVideos objectAtIndex:indexPath.section];
-    cellVideoData = [videosInSection objectAtIndex:indexPath.row];
+    cellVideoData = [[sectionedVideos objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         
     /////Bonus!: Using FTWCache and a NSString Categories NSString+MD5. Open-Source Classes that improve scrolling with dynamic d/led images////
     NSString *key = [cellVideoData.thumblink MD5Hash] ;
@@ -377,7 +389,7 @@ NSMutableArray *videoCategories;
                 });
             });
         }
-     
+    
         videoTitle.text = cellVideoData.title;
         videoDescription.text = cellVideoData.videoDescription;
     
