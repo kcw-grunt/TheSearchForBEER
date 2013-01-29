@@ -11,6 +11,7 @@
 #import "Comments.h"
 #import "CommentsXMLParser.h"
 #import "AppDelegate.h"
+#import "ComposeViewController.h"
 
 
 @interface YTDetailViewController ()
@@ -79,7 +80,7 @@
     videoTitleLabel.numberOfLines = 2;
     videoTitleLabel.backgroundColor = [UIColor clearColor];
     videoTitleLabel.textAlignment = NSTextAlignmentCenter;
-    videoTitleLabel.font = [UIFont fontWithName:@"HandOfSean" size:15];
+    videoTitleLabel.font = [UIFont boldSystemFontOfSize:14];
     videoTitleLabel.textColor = [UIColor blackColor];
     [self.view addSubview:videoTitleLabel];
     
@@ -134,7 +135,7 @@
     
         
     UIBarButtonItem *fbUser = [[UIBarButtonItem alloc] initWithCustomView:fbFrameStatusView];
-    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareYTonUserFBWallClick:)];
+    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(composeMessageForFB:)];
     UIBarButtonItem *flexspace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     NSArray *toolbarItems = [[NSArray alloc] initWithObjects:fbUser,flexspace2,item,compose, nil];
@@ -234,6 +235,27 @@
         action();
     }
     
+}
+
+
+-(void)composeMessageForFB:(UIButton *)sender{
+    
+//    ComposeViewController *cvc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
+//    cvc.ythtml = htmlString;
+//    cvc.vidTitle = [[videos objectAtIndex:[indexPath row]] title];
+//    
+//    
+//    [appDelegate.window setRootViewController: web];
+//    
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:web];
+//    [navController setNavigationBarHidden: NO];
+//    navController.navigationBar.tintColor = [UIColor blackColor];
+//    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"videoheader_320x44.png"] forBarMetrics:UIBarMetricsDefault];
+//    navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentModalViewController:navController animated:YES];
+
+
+
 }
 
 - (void)shareYTonUserFBWallClick:(UIButton *)sender {

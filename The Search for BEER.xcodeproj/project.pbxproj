@@ -38,6 +38,12 @@
 		5568ACD516B65A9700FB8F76 /* WebServerVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACD316B65A9700FB8F76 /* WebServerVerification.m */; };
 		5568ACDC16B65D1000FB8F76 /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACDB16B65D1000FB8F76 /* Comments.m */; };
 		5568ACDD16B65D1000FB8F76 /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACDB16B65D1000FB8F76 /* Comments.m */; };
+		5568ACE716B6814800FB8F76 /* Bugslist in Resources */ = {isa = PBXBuildFile; fileRef = 5568ACE616B6814700FB8F76 /* Bugslist */; };
+		5568ACE816B6814800FB8F76 /* Bugslist in Resources */ = {isa = PBXBuildFile; fileRef = 5568ACE616B6814700FB8F76 /* Bugslist */; };
+		5568ACEC16B6854300FB8F76 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACEA16B6854200FB8F76 /* ComposeViewController.m */; };
+		5568ACED16B6854300FB8F76 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACEA16B6854200FB8F76 /* ComposeViewController.m */; };
+		5568ACEE16B6854300FB8F76 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568ACEB16B6854200FB8F76 /* ComposeViewController.xib */; };
+		5568ACEF16B6854300FB8F76 /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568ACEB16B6854200FB8F76 /* ComposeViewController.xib */; };
 		558375D216B4CF9500F9C76A /* gruntsoftwarelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 558375D116B4CF9500F9C76A /* gruntsoftwarelogo.png */; };
 		558375D316B4CF9500F9C76A /* gruntsoftwarelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 558375D116B4CF9500F9C76A /* gruntsoftwarelogo.png */; };
 		558375D616B4D8FC00F9C76A /* grunt_G.png in Resources */ = {isa = PBXBuildFile; fileRef = 558375D516B4D8FC00F9C76A /* grunt_G.png */; };
@@ -110,6 +116,10 @@
 		5568ACD316B65A9700FB8F76 /* WebServerVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServerVerification.m; sourceTree = "<group>"; };
 		5568ACDA16B65D1000FB8F76 /* Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comments.h; sourceTree = "<group>"; };
 		5568ACDB16B65D1000FB8F76 /* Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comments.m; sourceTree = "<group>"; };
+		5568ACE616B6814700FB8F76 /* Bugslist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bugslist; sourceTree = "<group>"; };
+		5568ACE916B6854100FB8F76 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		5568ACEA16B6854200FB8F76 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		5568ACEB16B6854200FB8F76 /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
 		558375D116B4CF9500F9C76A /* gruntsoftwarelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gruntsoftwarelogo.png; sourceTree = "<group>"; };
 		558375D516B4D8FC00F9C76A /* grunt_G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunt_G.png; sourceTree = "<group>"; };
 		558375E816B5257B00F9C76A /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -248,6 +258,7 @@
 		559CA15216B349810008E7F3 = {
 			isa = PBXGroup;
 			children = (
+				5568ACE616B6814700FB8F76 /* Bugslist */,
 				5568ABF516B5367200FB8F76 /* CoreLocation.framework */,
 				559CA16716B349810008E7F3 /* The Search for BEER */,
 				559CA19116B349820008E7F3 /* The Search for BEERTests */,
@@ -295,6 +306,9 @@
 				559CA17A16B349810008E7F3 /* MainViewController.m */,
 				5568AC0416B5417A00FB8F76 /* YTDetailViewController.h */,
 				5568AC0516B5417A00FB8F76 /* YTDetailViewController.m */,
+				5568ACE916B6854100FB8F76 /* ComposeViewController.h */,
+				5568ACEA16B6854200FB8F76 /* ComposeViewController.m */,
+				5568ACEB16B6854200FB8F76 /* ComposeViewController.xib */,
 				5568AC0616B5417A00FB8F76 /* YTDetailViewController.xib */,
 				559CA17C16B349810008E7F3 /* FlipsideViewController.h */,
 				559CA17D16B349810008E7F3 /* FlipsideViewController.m */,
@@ -430,6 +444,8 @@
 				5568AC5A16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */,
 				5568AC5D16B5B2E100FB8F76 /* launch320x480.png in Resources */,
 				5568AC6016B5B35200FB8F76 /* launch320x4802.png in Resources */,
+				5568ACE716B6814800FB8F76 /* Bugslist in Resources */,
+				5568ACEE16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +467,8 @@
 				5568AC5B16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */,
 				5568AC5E16B5B2E100FB8F76 /* launch320x480.png in Resources */,
 				5568AC6116B5B35200FB8F76 /* launch320x4802.png in Resources */,
+				5568ACE816B6814800FB8F76 /* Bugslist in Resources */,
+				5568ACEF16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +509,7 @@
 				5568ACC716B6595F00FB8F76 /* CommentsXMLParser.m in Sources */,
 				5568ACD416B65A9700FB8F76 /* WebServerVerification.m in Sources */,
 				5568ACDC16B65D1000FB8F76 /* Comments.m in Sources */,
+				5568ACEC16B6854300FB8F76 /* ComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +526,7 @@
 				5568ACC816B6595F00FB8F76 /* CommentsXMLParser.m in Sources */,
 				5568ACD516B65A9700FB8F76 /* WebServerVerification.m in Sources */,
 				5568ACDD16B65D1000FB8F76 /* Comments.m in Sources */,
+				5568ACED16B6854300FB8F76 /* ComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
