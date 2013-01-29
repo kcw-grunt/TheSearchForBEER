@@ -134,7 +134,7 @@
     label.backgroundColor = [UIColor clearColor];
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:label];    
-    label.text = @"Share on Facebook";
+    label.text = @"Share to Facebook";
     label.textAlignment=NSTextAlignmentRight;
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont boldSystemFontOfSize:12];
