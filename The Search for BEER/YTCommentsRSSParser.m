@@ -9,12 +9,12 @@
 
 #import "YTCommentsRSSParser.h"
 #import "Comments.h"
-#import "WebServerVerification.h"
-
-@implementation YTCommentsRSSParser
+//#import "WebServerVerification.h"
 static NSUInteger kCountForNotification = 15;
 
-@synthesize delegate =_delegate;
+@implementation YTCommentsRSSParser
+
+@synthesize delegate;
 @synthesize parsedComments;
 @synthesize startTimeReference;
 @synthesize downloadStartTimeReference;
@@ -27,27 +27,29 @@ static NSUInteger kCountForNotification = 15;
     return @"Base Class";
 }
 
++ (XMLParserType)parserType {
+    NSAssert((self != [YTCommentsRSSParser class]), @"Class method parserType not valid for abstract base class iTunesRSSParser");
+    return XMLParserTypeAbstract;
+}
 
 - (void)start {
+//    self.startTimeReference = [NSDate timeIntervalSinceReferenceDate];
+//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+//    self.parsedSongs = [NSMutableArray array];
+//    // NSURL *url = [NSURL URLWithString:@"http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/newreleases/limit=300/rss.xml"];
+//    
+//    NSURL *url = [NSURL URLWithString:@"http://gdata.youtube.com/feeds/api/videos/SCgX4ixCRcQ/comments"];
+//    
+//    [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:url];
+}
+
+- (void)start:(NSString *)linkString{
     self.startTimeReference = [NSDate timeIntervalSinceReferenceDate];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     self.parsedComments = [NSMutableArray array];
     
-    NSURL *url = [[NSURL alloc] init];
-    NSURL *icaURL = [NSURL URLWithString:@"http://apps.int-comp.org/incompliance_listv1.xml"];
-    NSURL *gruntURL = [NSURL URLWithString:@"http://ica.grunt-software.com/articles/incompliance_listv1.xml"];
-    BOOL testURL = [WebServerVerification isValidURL:icaURL];
-    if(testURL == YES){
-        
-        url = icaURL;
-        
-    }else{
-        
-        url = gruntURL;
-    }
-    
-    
-    [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:url];
+    NSURL *ytVidComments = [NSURL URLWithString:linkString];
+    [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:ytVidComments];
 }
 
 - (void)downloadAndParse:(NSURL *)url {

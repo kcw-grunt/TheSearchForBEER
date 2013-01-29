@@ -9,5 +9,5 @@
 #import "Comments.h"
 
 @implementation Comments
-@synthesize title,author,comment;
+@synthesize author,content;
 @end

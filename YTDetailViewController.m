@@ -7,11 +7,11 @@
 //
 
 #import "YTDetailViewController.h"
-#import "YTVideo.h"
 #import "Comments.h"
 #import "CommentsXMLParser.h"
 #import "AppDelegate.h"
 #import "ComposeViewController.h"
+#import "ParseOperation.h"
 
 
 @interface YTDetailViewController ()
@@ -32,6 +32,8 @@
 @synthesize userProfileImage = _userProfileImage;
 @synthesize locationManager = _locationManager;
 @synthesize session;
+@synthesize ytCommentData,commentsFeedConnection,parseQueue;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,19 +50,24 @@
     [super viewDidLoad];
     
     
-    NSLog(@"YT HTML:%@",ythtml);
+   // NSLog(@"YT HTML:%@",ythtml);
     NSLog(@"Raw Vid:%@",entryDetail.rawID);
     NSLog(@"Commenst Vid:%@",entryDetail.videoCommentsLink);
 
     
+    NSString *feedURLString = entryDetail.videoCommentsLink;
     
+    NSURLRequest *commentsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
+    self.commentsFeedConnection = [[NSURLConnection alloc] initWithRequest:commentsURLRequest delegate:self];
+    // Test the validity of the connection object. The most likely reason for the connection object
+    // to be nil is a malformed URL, which is a programmatic error easily detected during development.
+    // If the URL is more dynamic, then you should implement a more flexible validation technique,
+    // and be able to both recover from errors and communicate problems to the user in an
+    // unobtrusive manner.
+    NSAssert(self.commentsFeedConnection != nil, @"Failure to create URL connection.");
     
-    NSString *youTubeCommentsURL = entryDetail.videoCommentsLink;
-    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:youTubeCommentsURL]];
-    NSError *error;
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    
-    NSLog(@"JSON Comments:%@",json);
+    // Start the status bar network activity indicator. We'll turn it off when the connection
+    // finishes or experiences an error.
     
        
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -88,6 +95,7 @@
                      ];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.rowHeight = 60;
     _tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_tableView];
         
@@ -135,7 +143,7 @@
     
         
     UIBarButtonItem *fbUser = [[UIBarButtonItem alloc] initWithCustomView:fbFrameStatusView];
-    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(composeMessageForFB:)];
+    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareYTonUserFBWallClick:)];
     UIBarButtonItem *flexspace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     NSArray *toolbarItems = [[NSArray alloc] initWithObjects:fbUser,flexspace2,item,compose, nil];
@@ -145,16 +153,14 @@
     shareToolbar.translucent = NO;
     [self.view addSubview:shareToolbar];
     
-   // [self parseWithParserType];
+    [self parseWithParserType:XMLParserTypeNSXMLParser];
     
     
   }
 
 /////////Load the Comments
 
-
-
-- (void)parseWithParserType{
+- (void)parseWithParserType:(XMLParserType)parserType{
     
     if (commentPosts == nil) {
         self.commentPosts = [NSMutableArray array];
@@ -163,16 +169,18 @@
         [self._tableView reloadData];
     }
     // Determine the Class for the parser
-    Class parserClass = [YTCommentsRSSParser class];
-    //Class parserClass = [CommentsXMLParser class];
+    Class parserClass = nil;
+
+    parserClass = [CommentsXMLParser class];
     
     // Create the parser, set its delegate, and start it.
     self.parser = [[parserClass alloc] init];
     parser.delegate = self;
-    [parser start];
+    [parser start:entryDetail.videoCommentsLink];
+    
 }
 
-#pragma mark <iTunesRSSParserDelegate> Implementation
+#pragma mark <RSSParserDelegate> Implementation
 
 - (void)parserDidEndParsingData:(YTCommentsRSSParser *)parser {
     [self._tableView reloadData];
@@ -239,28 +247,28 @@
 
 
 -(void)composeMessageForFB:(UIButton *)sender{
+      
+        ComposeViewController *cvc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
+        cvc.postVideoEntry = entryDetail;
+        NSLog(@"cvc: %@",cvc.postVideoEntry.link);
     
-//    ComposeViewController *cvc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
-//    cvc.ythtml = htmlString;
-//    cvc.vidTitle = [[videos objectAtIndex:[indexPath row]] title];
-//    
-//    
-//    [appDelegate.window setRootViewController: web];
-//    
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:web];
-//    [navController setNavigationBarHidden: NO];
-//    navController.navigationBar.tintColor = [UIColor blackColor];
-//    [navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"videoheader_320x44.png"] forBarMetrics:UIBarMetricsDefault];
-//    navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentModalViewController:navController animated:YES];
-
-
-
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cvc];
+        [navController setNavigationBarHidden: NO];
+        navController.navigationBar.barStyle = UIBarStyleBlack;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        
+        navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:navController animated:YES completion:nil];
 }
 
+
+
 - (void)shareYTonUserFBWallClick:(UIButton *)sender {
+    ///still debugging the post view controller composeMessage forFB.  For now it is a static post.
+    
     // Post a status update to the user's feed via the Graph API, and display an alert view
     // with the results or an error.
+        
     NSString *message = [NSString stringWithFormat:@"Check out this video I found using the new app 'The Search for BEER': %@",entryDetail.link];
     NSString *messageTitle =[NSString stringWithFormat:@"posted: '%@' to Facebook.",entryDetail.title];
     // if it is available to us, we will post using the native dialog
@@ -326,6 +334,7 @@
     return vC;
 }
 
+
 //
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Each subview in the cell will be identified by a unique tag.
@@ -342,7 +351,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                        reuseIdentifier:kCommentsCellID];
         
-        authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 130, 12)];
+        authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 3, 130, 12)];
         authorLabel.tag = kAuthorLabelTag;
         authorLabel.font = [UIFont systemFontOfSize:10];
         authorLabel.textColor = [UIColor grayColor];
@@ -350,10 +359,11 @@
         authorLabel.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:authorLabel];
         
-        commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 24, 250, 15)];
+        commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 14, 290, 40)];
         commentLabel.tag = kCommentLabelTag;
-        commentLabel.font = [UIFont boldSystemFontOfSize:12.0];
+        commentLabel.font = [UIFont systemFontOfSize:10.5];
         commentLabel.textAlignment = NSTextAlignmentLeft;
+        commentLabel.numberOfLines = 3;
         commentLabel.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:commentLabel];
     
@@ -368,8 +378,8 @@
     
     // Get the specific newslines for this row.
     // Set the relevant data for each subview in the cell.
-    authorLabel.text = [[commentPosts objectAtIndex:indexPath.row] author];
-    commentLabel.text = [[commentPosts objectAtIndex:indexPath.row] comment];
+    authorLabel.text = [NSString stringWithFormat:@"%@:",[[commentPosts objectAtIndex:indexPath.row] author]];
+    commentLabel.text = [[commentPosts objectAtIndex:indexPath.row] content];
     	
     return cell;
 }

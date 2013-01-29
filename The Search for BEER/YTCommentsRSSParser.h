@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    XMLParserTypeAbstract = -1,
+    XMLParserTypeNSXMLParser = 0,
+    XMLParserTypeLibXMLParser
+} XMLParserType;
+
 @class YTCommentsRSSParser, Comments;
 
 // Protocol for the parser to communicate with its delegate.
@@ -34,7 +40,7 @@
     double totalDuration;
 }
 
-@property (nonatomic, assign) id <commentsRSSParserDelegate> delegate;
+@property (nonatomic, strong) id <commentsRSSParserDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *parsedComments;
 @property NSTimeInterval startTimeReference;
 @property NSTimeInterval downloadStartTimeReference;
@@ -43,9 +49,11 @@
 @property double totalDuration;
 
 + (NSString *)parserName;
-//+ (XMLParserType)parserType;
++ (XMLParserType)parserType;
 
+- (void)start:(NSString *)linkString;
 - (void)start;
+
 
 // Subclasses must implement this method. It will be invoked on a secondary thread to keep the application responsive.
 // Although NSURLConnection is inherently asynchronous, the parsing can be quite CPU intensive on the device, so

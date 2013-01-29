@@ -10,15 +10,13 @@
 
 @interface Comments : NSObject{
 
-    NSString    *title;
-    NSString    *comment;
+    NSString    *content;
     NSString    *author;
 
 
 }
 
-@property (nonatomic, copy) NSString    *title;
-@property (nonatomic, copy) NSString    *comment;
+@property (nonatomic, copy) NSString    *content;
 @property (nonatomic, copy) NSString    *author;
 
 

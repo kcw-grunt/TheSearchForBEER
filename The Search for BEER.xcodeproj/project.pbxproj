@@ -34,8 +34,6 @@
 		5568ACC616B6595F00FB8F76 /* YTCommentsRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */; };
 		5568ACC716B6595F00FB8F76 /* CommentsXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC416B6595F00FB8F76 /* CommentsXMLParser.m */; };
 		5568ACC816B6595F00FB8F76 /* CommentsXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC416B6595F00FB8F76 /* CommentsXMLParser.m */; };
-		5568ACD416B65A9700FB8F76 /* WebServerVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACD316B65A9700FB8F76 /* WebServerVerification.m */; };
-		5568ACD516B65A9700FB8F76 /* WebServerVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACD316B65A9700FB8F76 /* WebServerVerification.m */; };
 		5568ACDC16B65D1000FB8F76 /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACDB16B65D1000FB8F76 /* Comments.m */; };
 		5568ACDD16B65D1000FB8F76 /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACDB16B65D1000FB8F76 /* Comments.m */; };
 		5568ACE716B6814800FB8F76 /* Bugslist in Resources */ = {isa = PBXBuildFile; fileRef = 5568ACE616B6814700FB8F76 /* Bugslist */; };
@@ -55,6 +53,7 @@
 		558375EF16B525EB00F9C76A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558375EE16B525EB00F9C76A /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		558375F116B525FC00F9C76A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558375F016B525FB00F9C76A /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		558375F316B5260A00F9C76A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558375F216B5260A00F9C76A /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		558FAA8A16B7AA3D00553A96 /* notesbackground280x130.png in Resources */ = {isa = PBXBuildFile; fileRef = 558FAA8916B7AA3D00553A96 /* notesbackground280x130.png */; };
 		559A95E416B3BBD80077150C /* YTProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = 559A95E316B3BBD80077150C /* YTProcessing.m */; };
 		559A95EB16B43E860077150C /* YTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 559A95EA16B43E860077150C /* YTVideo.m */; };
 		559A95F616B48E5A0077150C /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 559A95F516B48E5A0077150C /* FTWCache.m */; };
@@ -112,8 +111,6 @@
 		5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCommentsRSSParser.m; sourceTree = "<group>"; };
 		5568ACC316B6595F00FB8F76 /* CommentsXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsXMLParser.h; sourceTree = "<group>"; };
 		5568ACC416B6595F00FB8F76 /* CommentsXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsXMLParser.m; sourceTree = "<group>"; };
-		5568ACD216B65A9700FB8F76 /* WebServerVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServerVerification.h; sourceTree = "<group>"; };
-		5568ACD316B65A9700FB8F76 /* WebServerVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServerVerification.m; sourceTree = "<group>"; };
 		5568ACDA16B65D1000FB8F76 /* Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comments.h; sourceTree = "<group>"; };
 		5568ACDB16B65D1000FB8F76 /* Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comments.m; sourceTree = "<group>"; };
 		5568ACE616B6814700FB8F76 /* Bugslist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bugslist; sourceTree = "<group>"; };
@@ -127,6 +124,7 @@
 		558375EE16B525EB00F9C76A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		558375F016B525FB00F9C76A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		558375F216B5260A00F9C76A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		558FAA8916B7AA3D00553A96 /* notesbackground280x130.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notesbackground280x130.png; sourceTree = "<group>"; };
 		559A95E216B3BBD80077150C /* YTProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTProcessing.h; sourceTree = "<group>"; };
 		559A95E316B3BBD80077150C /* YTProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTProcessing.m; sourceTree = "<group>"; };
 		559A95E916B43E860077150C /* YTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVideo.h; sourceTree = "<group>"; };
@@ -196,8 +194,6 @@
 		5568AC7D16B656FD00FB8F76 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
-				5568ACD216B65A9700FB8F76 /* WebServerVerification.h */,
-				5568ACD316B65A9700FB8F76 /* WebServerVerification.m */,
 				5568ACC116B6595F00FB8F76 /* YTCommentsRSSParser.h */,
 				5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */,
 				5568ACC316B6595F00FB8F76 /* CommentsXMLParser.h */,
@@ -237,6 +233,7 @@
 				5568ABF716B53E2500FB8F76 /* login-button-small.png */,
 				5568ABF216B5364000FB8F76 /* f_logo.png */,
 				5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */,
+				558FAA8916B7AA3D00553A96 /* notesbackground280x130.png */,
 				5568AC5F16B5B35200FB8F76 /* launch320x4802.png */,
 				5568AC5C16B5B2E100FB8F76 /* launch320x480.png */,
 				5568ABEF16B534DA00FB8F76 /* gruntloadscreen640x960.png */,
@@ -446,6 +443,7 @@
 				5568AC6016B5B35200FB8F76 /* launch320x4802.png in Resources */,
 				5568ACE716B6814800FB8F76 /* Bugslist in Resources */,
 				5568ACEE16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
+				558FAA8A16B7AA3D00553A96 /* notesbackground280x130.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +505,6 @@
 				5568AC0716B5417A00FB8F76 /* YTDetailViewController.m in Sources */,
 				5568ACC516B6595F00FB8F76 /* YTCommentsRSSParser.m in Sources */,
 				5568ACC716B6595F00FB8F76 /* CommentsXMLParser.m in Sources */,
-				5568ACD416B65A9700FB8F76 /* WebServerVerification.m in Sources */,
 				5568ACDC16B65D1000FB8F76 /* Comments.m in Sources */,
 				5568ACEC16B6854300FB8F76 /* ComposeViewController.m in Sources */,
 			);
@@ -524,7 +521,6 @@
 				5568AC0816B5417A00FB8F76 /* YTDetailViewController.m in Sources */,
 				5568ACC616B6595F00FB8F76 /* YTCommentsRSSParser.m in Sources */,
 				5568ACC816B6595F00FB8F76 /* CommentsXMLParser.m in Sources */,
-				5568ACD516B65A9700FB8F76 /* WebServerVerification.m in Sources */,
 				5568ACDD16B65D1000FB8F76 /* Comments.m in Sources */,
 				5568ACED16B6854300FB8F76 /* ComposeViewController.m in Sources */,
 			);

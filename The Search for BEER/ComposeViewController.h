@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YTVideo.h"
 
-@interface ComposeViewController : UIViewController
+@interface ComposeViewController : UIViewController<UITextViewDelegate>{
+    UITextView *postView;
+
+    YTVideo *postVideoEntry;
+
+}
+@property (nonatomic,strong) YTVideo *postVideoEntry;
+@property (nonatomic,retain) UITextView *postView;
 
 @end

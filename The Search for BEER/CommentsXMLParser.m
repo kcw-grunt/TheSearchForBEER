@@ -9,12 +9,14 @@
 #import "CommentsXMLParser.h"
 #import "Comments.h"
 
-@implementation ArticleXMLParser
+@implementation CommentsXMLParser
 
 + (NSString *)parserName {
     return @"NSXMLParser";
 }
-
++ (XMLParserType)parserType {
+    return XMLParserTypeNSXMLParser;
+}
 
 @synthesize currentString;
 @synthesize rssConnection;
@@ -24,7 +26,7 @@
 
 - (void)downloadAndParse:(NSURL *)url {
     
-    
+    NSLog(@"URL: %@",url);
     self.xmlData = [NSMutableData data];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:url];
@@ -83,7 +85,7 @@
 static const NSUInteger kAutoreleasePoolPurgeFrequency = 50;
 
 - (void)finishedcurrentComments {
-    [self performSelectorOnMainThread:@selector(parsedArticle:) withObject:currentComments waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(parsedComments:) withObject:currentComments waitUntilDone:NO];
     // performSelectorOnMainThread: will retain the object until the selector has been performed
     // setting the local reference to nil ensures that the local reference will be released
     self.currentComments = nil;
@@ -99,27 +101,28 @@ static const NSUInteger kAutoreleasePoolPurgeFrequency = 50;
 // Constants for the XML element names that will be considered during the parse. 
 // Declaring these as static constants reduces the number of objects created during the run
 // and is less prone to programmer error.
-static NSString *kName_Item = @"item";
-static NSString *kName_Author = @"author";
-static NSString *kName_Comment = @"comment";
+
+static NSString *kEntryElementName = @"entry";
+static NSString *kContentElementName = @"content";
+static NSString *kAuthorElementName = @"author";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
-    if ([elementName isEqualToString:kName_Item]) {
+    if ([elementName isEqualToString:kEntryElementName]) {
         self.currentComments = [[Comments alloc] init];
-    } else if ([elementName isEqualToString:kName_Author] || [elementName isEqualToString:kName_Comment]) {
+    } else if ([elementName isEqualToString:kContentElementName] || [elementName isEqualToString:kAuthorElementName]) {
         [currentString setString:@""];
         storingCharacters = YES;
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    if ([elementName isEqualToString:kName_Item]) {
+    if ([elementName isEqualToString:kEntryElementName]) {
         [self finishedcurrentComments];
-    } else if ([elementName isEqualToString:kName_Author]) {
+    } else if ([elementName isEqualToString:kAuthorElementName]) {
         currentComments.author = currentString;
        
-    } else if ([elementName isEqualToString:kName_Comment]) {
-        currentComments.comment = currentString;
+    } else if ([elementName isEqualToString:kContentElementName]) {
+        currentComments.content = currentString;
     } 
     storingCharacters = NO;
 }

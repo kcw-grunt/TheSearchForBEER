@@ -11,7 +11,7 @@
 
 @class Comments;
 
-@interface ArticleXMLParser : YTCommentsRSSParser <NSXMLParserDelegate>{
+@interface CommentsXMLParser : YTCommentsRSSParser <NSXMLParserDelegate>{
 
     NSMutableString *currentString;
     Comments *currentComments;
@@ -20,6 +20,7 @@
     BOOL done;
     NSURLConnection *rssConnection;
     NSUInteger countOfParsedComments;
+
 }
 
 @property (nonatomic, retain) NSMutableString *currentString;

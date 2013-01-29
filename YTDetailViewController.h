@@ -11,8 +11,12 @@
 #import "YTCommentsRSSParser.h"
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface YTDetailViewController : UIViewController  <UIWebViewDelegate,UITextViewDelegate,commentsRSSParserDelegate,UITableViewDataSource,UITableViewDelegate>{
+@interface YTDetailViewController : UIViewController  <UIWebViewDelegate,UITextViewDelegate,commentsRSSParserDelegate,UITableViewDataSource,UITableViewDelegate,commentsRSSParserDelegate>{
 
+    
+    
+    
+    
     YTCommentsRSSParser *parser;
     
     NSMutableArray  *commentPosts;
@@ -28,7 +32,19 @@
     NSString *vidTitle;
     
     FBSession *session;
+    
+    
+@private
+    // for downloading the xml data
+    NSURLConnection *commentsFeedConnection;
+    NSMutableData *ytCommentData;    
+    NSOperationQueue *parseQueue;
 }
+
+@property (nonatomic, retain)NSURLConnection *commentsFeedConnection;
+@property (nonatomic, retain)NSMutableData *ytCommentData;
+@property (nonatomic, retain)NSOperationQueue *parseQueue;
+
 
 @property (nonatomic, retain) UIWebView *mainWebView;
 
@@ -46,5 +62,5 @@
 
 @property (strong, nonatomic) FBSession *session;
 
-- (void)parseWithParserType;
+- (void)parseWithParserType:(XMLParserType)parserType;
 @end
