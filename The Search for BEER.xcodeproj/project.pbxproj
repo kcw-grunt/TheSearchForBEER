@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		55344C8616B8B70B008A8DE8 /* f_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 55344C8516B8B70B008A8DE8 /* f_logo.png */; };
+		55344C8916B8BA52008A8DE8 /* gruntloadscreen2320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 55344C8816B8BA52008A8DE8 /* gruntloadscreen2320x480.png */; };
+		55344C8B16B8BA84008A8DE8 /* launch320x4802.png in Resources */ = {isa = PBXBuildFile; fileRef = 55344C8A16B8BA84008A8DE8 /* launch320x4802.png */; };
 		5568ABE716B52D4300FB8F76 /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */; };
 		5568ABE816B52D4300FB8F76 /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */; };
 		5568ABEA16B52FF800FB8F76 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568ABE916B52FF800FB8F76 /* FacebookSDK.framework */; };
@@ -21,12 +23,6 @@
 		5568AC0816B5417A00FB8F76 /* YTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568AC0516B5417A00FB8F76 /* YTDetailViewController.m */; };
 		5568AC0916B5417A00FB8F76 /* YTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC0616B5417A00FB8F76 /* YTDetailViewController.xib */; };
 		5568AC0A16B5417A00FB8F76 /* YTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC0616B5417A00FB8F76 /* YTDetailViewController.xib */; };
-		5568AC5A16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */; };
-		5568AC5B16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */; };
-		5568AC5D16B5B2E100FB8F76 /* launch320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5C16B5B2E100FB8F76 /* launch320x480.png */; };
-		5568AC5E16B5B2E100FB8F76 /* launch320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5C16B5B2E100FB8F76 /* launch320x480.png */; };
-		5568AC6016B5B35200FB8F76 /* launch320x4802.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5F16B5B35200FB8F76 /* launch320x4802.png */; };
-		5568AC6116B5B35200FB8F76 /* launch320x4802.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568AC5F16B5B35200FB8F76 /* launch320x4802.png */; };
 		5568ACC516B6595F00FB8F76 /* YTCommentsRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */; };
 		5568ACC616B6595F00FB8F76 /* YTCommentsRSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */; };
 		5568ACC716B6595F00FB8F76 /* CommentsXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ACC416B6595F00FB8F76 /* CommentsXMLParser.m */; };
@@ -91,6 +87,8 @@
 
 /* Begin PBXFileReference section */
 		55344C8516B8B70B008A8DE8 /* f_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_logo.png; sourceTree = "<group>"; };
+		55344C8816B8BA52008A8DE8 /* gruntloadscreen2320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gruntloadscreen2320x480.png; sourceTree = "<group>"; };
+		55344C8A16B8BA84008A8DE8 /* launch320x4802.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch320x4802.png; sourceTree = "<group>"; };
 		5568ABE516B52D4300FB8F76 /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
 		5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
 		5568ABE916B52FF800FB8F76 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -100,9 +98,6 @@
 		5568AC0416B5417A00FB8F76 /* YTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTDetailViewController.h; path = ../YTDetailViewController.h; sourceTree = "<group>"; };
 		5568AC0516B5417A00FB8F76 /* YTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTDetailViewController.m; path = ../YTDetailViewController.m; sourceTree = "<group>"; };
 		5568AC0616B5417A00FB8F76 /* YTDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YTDetailViewController.xib; path = ../YTDetailViewController.xib; sourceTree = "<group>"; };
-		5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gruntloadscreen2320x480.png; path = "../../../Grunt Software Files/gruntloadscreen2320x480.png"; sourceTree = "<group>"; };
-		5568AC5C16B5B2E100FB8F76 /* launch320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch320x480.png; path = ../../launch320x480.png; sourceTree = "<group>"; };
-		5568AC5F16B5B35200FB8F76 /* launch320x4802.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch320x4802.png; path = ../../launch320x4802.png; sourceTree = "<group>"; };
 		5568ACC116B6595F00FB8F76 /* YTCommentsRSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCommentsRSSParser.h; sourceTree = "<group>"; };
 		5568ACC216B6595F00FB8F76 /* YTCommentsRSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCommentsRSSParser.m; sourceTree = "<group>"; };
 		5568ACC316B6595F00FB8F76 /* CommentsXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsXMLParser.h; sourceTree = "<group>"; };
@@ -228,10 +223,9 @@
 			children = (
 				5568ABF716B53E2500FB8F76 /* login-button-small.png */,
 				55344C8516B8B70B008A8DE8 /* f_logo.png */,
-				5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */,
+				55344C8816B8BA52008A8DE8 /* gruntloadscreen2320x480.png */,
 				558FAA8916B7AA3D00553A96 /* notesbackground280x130.png */,
-				5568AC5F16B5B35200FB8F76 /* launch320x4802.png */,
-				5568AC5C16B5B2E100FB8F76 /* launch320x480.png */,
+				55344C8A16B8BA84008A8DE8 /* launch320x4802.png */,
 				558375D516B4D8FC00F9C76A /* grunt_G.png */,
 				5568ABFA16B53ED800FB8F76 /* login-button-small-pressed.png */,
 				558375D116B4CF9500F9C76A /* gruntsoftwarelogo.png */,
@@ -431,13 +425,12 @@
 				5568ABF816B53E2500FB8F76 /* login-button-small.png in Resources */,
 				5568ABFB16B53ED800FB8F76 /* login-button-small-pressed.png in Resources */,
 				5568AC0916B5417A00FB8F76 /* YTDetailViewController.xib in Resources */,
-				5568AC5A16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */,
-				5568AC5D16B5B2E100FB8F76 /* launch320x480.png in Resources */,
-				5568AC6016B5B35200FB8F76 /* launch320x4802.png in Resources */,
 				5568ACE716B6814800FB8F76 /* Bugslist in Resources */,
 				5568ACEE16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
 				558FAA8A16B7AA3D00553A96 /* notesbackground280x130.png in Resources */,
 				55344C8616B8B70B008A8DE8 /* f_logo.png in Resources */,
+				55344C8916B8BA52008A8DE8 /* gruntloadscreen2320x480.png in Resources */,
+				55344C8B16B8BA84008A8DE8 /* launch320x4802.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,9 +447,6 @@
 				5568ABF916B53E2500FB8F76 /* login-button-small.png in Resources */,
 				5568ABFC16B53ED800FB8F76 /* login-button-small-pressed.png in Resources */,
 				5568AC0A16B5417A00FB8F76 /* YTDetailViewController.xib in Resources */,
-				5568AC5B16B5B0B700FB8F76 /* gruntloadscreen2320x480.png in Resources */,
-				5568AC5E16B5B2E100FB8F76 /* launch320x480.png in Resources */,
-				5568AC6116B5B35200FB8F76 /* launch320x4802.png in Resources */,
 				5568ACE816B6814800FB8F76 /* Bugslist in Resources */,
 				5568ACEF16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
 			);
