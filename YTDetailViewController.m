@@ -142,7 +142,7 @@
     
         
     UIBarButtonItem *fbUser = [[UIBarButtonItem alloc] initWithCustomView:fbFrameStatusView];
-    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareYTonUserFBWallClick:)];
+    UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(composeMessageForFB:)];//shareYTonUserFBWallClick
     UIBarButtonItem *flexspace2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     NSArray *toolbarItems = [[NSArray alloc] initWithObjects:fbUser,flexspace2,item,compose, nil];

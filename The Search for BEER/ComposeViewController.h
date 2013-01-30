@@ -15,7 +15,7 @@
     YTVideo *postVideoEntry;
 
 }
-@property (nonatomic,strong) YTVideo *postVideoEntry;
+@property (nonatomic,retain) YTVideo *postVideoEntry;
 @property (nonatomic,retain) UITextView *postView;
 
 @end
