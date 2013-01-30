@@ -64,7 +64,6 @@
 		559CA16C16B349810008E7F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 559CA16A16B349810008E7F3 /* InfoPlist.strings */; };
 		559CA16E16B349810008E7F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA16D16B349810008E7F3 /* main.m */; };
 		559CA17216B349810008E7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA17116B349810008E7F3 /* AppDelegate.m */; };
-		559CA17416B349810008E7F3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 559CA17316B349810008E7F3 /* Default.png */; };
 		559CA17616B349810008E7F3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 559CA17516B349810008E7F3 /* Default@2x.png */; };
 		559CA17816B349810008E7F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 559CA17716B349810008E7F3 /* Default-568h@2x.png */; };
 		559CA17B16B349810008E7F3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559CA17A16B349810008E7F3 /* MainViewController.m */; };
@@ -421,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				559CA16C16B349810008E7F3 /* InfoPlist.strings in Resources */,
-				559CA17416B349810008E7F3 /* Default.png in Resources */,
 				559CA17616B349810008E7F3 /* Default@2x.png in Resources */,
 				559CA17816B349810008E7F3 /* Default-568h@2x.png in Resources */,
 				559CA18116B349810008E7F3 /* MainViewController.xib in Resources */,
