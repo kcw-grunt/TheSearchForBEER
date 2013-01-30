@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55344C8616B8B70B008A8DE8 /* f_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 55344C8516B8B70B008A8DE8 /* f_logo.png */; };
 		5568ABE716B52D4300FB8F76 /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */; };
 		5568ABE816B52D4300FB8F76 /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */; };
 		5568ABEA16B52FF800FB8F76 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568ABE916B52FF800FB8F76 /* FacebookSDK.framework */; };
 		5568ABEB16B52FF800FB8F76 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568ABE916B52FF800FB8F76 /* FacebookSDK.framework */; };
 		5568ABF016B534DA00FB8F76 /* gruntloadscreen640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABEF16B534DA00FB8F76 /* gruntloadscreen640x960.png */; };
 		5568ABF116B534DA00FB8F76 /* gruntloadscreen640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABEF16B534DA00FB8F76 /* gruntloadscreen640x960.png */; };
-		5568ABF316B5364000FB8F76 /* f_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABF216B5364000FB8F76 /* f_logo.png */; };
-		5568ABF416B5364000FB8F76 /* f_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABF216B5364000FB8F76 /* f_logo.png */; };
 		5568ABF616B5367200FB8F76 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5568ABF516B5367200FB8F76 /* CoreLocation.framework */; };
 		5568ABF816B53E2500FB8F76 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABF716B53E2500FB8F76 /* login-button-small.png */; };
 		5568ABF916B53E2500FB8F76 /* login-button-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 5568ABF716B53E2500FB8F76 /* login-button-small.png */; };
@@ -93,11 +92,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55344C8516B8B70B008A8DE8 /* f_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_logo.png; sourceTree = "<group>"; };
 		5568ABE516B52D4300FB8F76 /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
 		5568ABE616B52D4300FB8F76 /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
 		5568ABE916B52FF800FB8F76 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		5568ABEF16B534DA00FB8F76 /* gruntloadscreen640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gruntloadscreen640x960.png; path = "../../../Grunt Software Files/gruntloadscreen640x960.png"; sourceTree = "<group>"; };
-		5568ABF216B5364000FB8F76 /* f_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = f_logo.png; path = ../../../../Downloads/f_logo.png; sourceTree = "<group>"; };
 		5568ABF516B5367200FB8F76 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5568ABF716B53E2500FB8F76 /* login-button-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button-small.png"; path = "../FacebookSDKResources.bundle/FBLoginView/images/login-button-small.png"; sourceTree = "<group>"; };
 		5568ABFA16B53ED800FB8F76 /* login-button-small-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login-button-small-pressed.png"; path = "../FacebookSDKResources.bundle/FBLoginView/images/login-button-small-pressed.png"; sourceTree = "<group>"; };
@@ -231,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				5568ABF716B53E2500FB8F76 /* login-button-small.png */,
-				5568ABF216B5364000FB8F76 /* f_logo.png */,
+				55344C8516B8B70B008A8DE8 /* f_logo.png */,
 				5568AC5916B5B0B700FB8F76 /* gruntloadscreen2320x480.png */,
 				558FAA8916B7AA3D00553A96 /* notesbackground280x130.png */,
 				5568AC5F16B5B35200FB8F76 /* launch320x4802.png */,
@@ -434,7 +433,6 @@
 				558375EA16B5257B00F9C76A /* FacebookSDKResources.bundle in Resources */,
 				558375EC16B5257B00F9C76A /* FBUserSettingsViewResources.bundle in Resources */,
 				5568ABF016B534DA00FB8F76 /* gruntloadscreen640x960.png in Resources */,
-				5568ABF316B5364000FB8F76 /* f_logo.png in Resources */,
 				5568ABF816B53E2500FB8F76 /* login-button-small.png in Resources */,
 				5568ABFB16B53ED800FB8F76 /* login-button-small-pressed.png in Resources */,
 				5568AC0916B5417A00FB8F76 /* YTDetailViewController.xib in Resources */,
@@ -444,6 +442,7 @@
 				5568ACE716B6814800FB8F76 /* Bugslist in Resources */,
 				5568ACEE16B6854300FB8F76 /* ComposeViewController.xib in Resources */,
 				558FAA8A16B7AA3D00553A96 /* notesbackground280x130.png in Resources */,
+				55344C8616B8B70B008A8DE8 /* f_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +457,6 @@
 				558375EB16B5257B00F9C76A /* FacebookSDKResources.bundle in Resources */,
 				558375ED16B5257B00F9C76A /* FBUserSettingsViewResources.bundle in Resources */,
 				5568ABF116B534DA00FB8F76 /* gruntloadscreen640x960.png in Resources */,
-				5568ABF416B5364000FB8F76 /* f_logo.png in Resources */,
 				5568ABF916B53E2500FB8F76 /* login-button-small.png in Resources */,
 				5568ABFC16B53ED800FB8F76 /* login-button-small-pressed.png in Resources */,
 				5568AC0A16B5417A00FB8F76 /* YTDetailViewController.xib in Resources */,
