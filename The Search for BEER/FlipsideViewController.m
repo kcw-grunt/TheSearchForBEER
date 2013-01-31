@@ -9,11 +9,17 @@
 #import "FlipsideViewController.h"
 
 @interface FlipsideViewController ()
+{
 
+    UISegmentedControl *orderSegmentedControl;
+
+}
+
+@property(nonatomic,strong) UISegmentedControl *orderSegmentedControl;
 @end
 
 @implementation FlipsideViewController
-
+@synthesize orderSegmentedControl;
 
 - (void)viewDidLoad
 {
@@ -23,22 +29,17 @@
     segmentLabel.font = [UIFont boldSystemFontOfSize:16];
     segmentLabel.text = @"Get results by:";
     segmentLabel.textColor = [UIColor whiteColor];
-
     [self.view addSubview:segmentLabel];
     
-    
-    UISegmentedControl *orderByPreference = [[UISegmentedControl alloc] initWithFrame:CGRectMake(14, 85, 290, 45)];
-    //orderByPreference.tintColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0];
-    orderByPreference.segmentedControlStyle = UISegmentedControlStyleBar;
-    [orderByPreference insertSegmentWithTitle:@"Relevance" atIndex:0 animated:YES];
-    [orderByPreference insertSegmentWithTitle:@"Published" atIndex:1 animated:YES];
-    [orderByPreference insertSegmentWithTitle:@"Views" atIndex:2 animated:YES];
-    [orderByPreference insertSegmentWithTitle:@"Rating" atIndex:3 animated:YES];
-    [orderByPreference addTarget:self action:@selector(_setFeedPreference:) forControlEvents:UIControlEventValueChanged];
-    [orderByPreference setSelectedSegmentIndex:0];
-    
-    [self.view addSubview:orderByPreference];
-    
+    orderSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(14, 85, 290, 45)];
+    orderSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    [orderSegmentedControl insertSegmentWithTitle:@"Relevance" atIndex:0 animated:YES];
+    [orderSegmentedControl insertSegmentWithTitle:@"Published" atIndex:1 animated:YES];
+    [orderSegmentedControl insertSegmentWithTitle:@"Views" atIndex:2 animated:YES];
+    [orderSegmentedControl insertSegmentWithTitle:@"Rating" atIndex:3 animated:YES];
+    [orderSegmentedControl addTarget:self action:@selector(_setFeedPreference:) forControlEvents:UIControlEventValueChanged];
+    [orderSegmentedControl setSelectedSegmentIndex:0];
+    [self.view addSubview:orderSegmentedControl];
     
     UILabel *fbLabel =[[UILabel alloc]initWithFrame:CGRectMake(10, 135, 200, 40)];
     fbLabel.backgroundColor = [UIColor clearColor];
@@ -63,12 +64,6 @@
     gruntLogoView.contentMode = UIViewContentModeScaleAspectFit;
     gruntLogoView.image = [UIImage imageNamed:@"gruntsoftwarelogo"];
     [self.view addSubview:gruntLogoView];
-    
-    
-    
-    
-
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,6 +77,26 @@
 
 -(void)_setFeedPreference:(id)sender{
 
+    int selectedIndex = orderSegmentedControl.selectedSegmentIndex;
+    
+    switch (selectedIndex) {
+        case 0://NSLog(@"Relevance");
+           
+            break;
+        case 1://NSLog(@"Published");
+            
+            break;
+        case 2://NSLog(@"Views");
+            
+            break;
+        case 3://NSLog(@"Rating");
+            
+            break;
+        default:
+            break;
+    }
+    
+    
 
 
 

@@ -378,7 +378,7 @@ NSMutableArray *ytArray;
             videoImageThumb.image = [UIImage imageNamed:@"grunt_G"];
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
             dispatch_async(queue, ^{
-                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[[sectionedVideos objectAtIndex:indexPath.section]objectAtIndex:indexPath.row]thumblink]]];
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[sectionArray objectAtIndex:indexPath.row]thumblink]]];
                 [FTWCache setObject:data forKey:key];
                 UIImage *image = [UIImage imageWithData:data];
                 dispatch_async(dispatch_get_main_queue(), ^{
