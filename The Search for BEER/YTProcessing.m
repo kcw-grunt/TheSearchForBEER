@@ -12,19 +12,9 @@
 
 
 +(id)cleanCategories:(NSMutableArray *)rawYTArray{
-    
-    NSMutableArray *returningArray = [[NSMutableArray alloc] init];
-    
-    for (NSArray *catArray in rawYTArray) {
-        NSString *categoryLabel;
-        categoryLabel = [catArray objectAtIndex:1];
-        [returningArray addObject:categoryLabel];
-    }
-
-    NSSet *categorySet = [NSSet setWithArray:returningArray];
+    NSSet *categorySet = [NSSet setWithArray:rawYTArray];
     NSMutableArray *array = [NSMutableArray arrayWithArray:[categorySet allObjects]];
-    returningArray = array;
-    return returningArray;
+    return array;
 }
 
 @end

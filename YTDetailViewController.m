@@ -31,18 +31,8 @@
 @synthesize userProfileImage = _userProfileImage;
 @synthesize locationManager = _locationManager;
 @synthesize session;
-@synthesize ytCommentData,commentsFeedConnection,parseQueue;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        [self.navigationController.navigationBar setHidden:NO];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -52,21 +42,6 @@
    // NSLog(@"YT HTML:%@",ythtml);
     NSLog(@"Raw Vid:%@",entryDetail.rawID);
     NSLog(@"Commenst Vid:%@",entryDetail.videoCommentsLink);
-
-    
-    NSString *feedURLString = entryDetail.videoCommentsLink;
-    
-    NSURLRequest *commentsURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
-    self.commentsFeedConnection = [[NSURLConnection alloc] initWithRequest:commentsURLRequest delegate:self];
-    // Test the validity of the connection object. The most likely reason for the connection object
-    // to be nil is a malformed URL, which is a programmatic error easily detected during development.
-    // If the URL is more dynamic, then you should implement a more flexible validation technique,
-    // and be able to both recover from errors and communicate problems to the user in an
-    // unobtrusive manner.
-    NSAssert(self.commentsFeedConnection != nil, @"Failure to create URL connection.");
-    
-    // Start the status bar network activity indicator. We'll turn it off when the connection
-    // finishes or experiences an error.
     
        
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -249,26 +224,21 @@
       
         ComposeViewController *cvc = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
         cvc.postVideoEntry = entryDetail;
-        NSLog(@"cvc: %@",cvc.postVideoEntry.link);
-    
+        cvc.delegate = self;
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:cvc];
         [navController setNavigationBarHidden: NO];
         navController.navigationBar.barStyle = UIBarStyleBlack;
         navController.navigationBar.tintColor = [UIColor blackColor];
-        
+        navController.title = @"Post to FaceBook";
         navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:navController animated:YES completion:nil];
 }
-
-
-
-- (void)shareYTonUserFBWallClick:(UIButton *)sender {
-    ///still debugging the post view controller composeMessage forFB.  For now it is a static post.
+-(void)composeViewController:(ComposeViewController *)controller didUpdateFBPost:(NSString *)fbPost{
     
     // Post a status update to the user's feed via the Graph API, and display an alert view
     // with the results or an error.
-        
-    NSString *message = [NSString stringWithFormat:@"Check out this video I found using the new app 'The Search for BEER': %@",entryDetail.link];
+    
+    NSString *message = fbPost;
     NSString *messageTitle =[NSString stringWithFormat:@"posted: '%@' to Facebook.",entryDetail.title];
     // if it is available to us, we will post using the native dialog
     BOOL displayedNativeDialog = [FBNativeDialogs presentShareDialogModallyFrom:self
@@ -288,7 +258,10 @@
             
         }];
     }
+
+
 }
+
 
 // UIAlertView helper for post buttons
 - (void)showAlert:(NSString *)message

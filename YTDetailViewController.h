@@ -13,10 +13,7 @@
 
 @interface YTDetailViewController : UIViewController  <UIWebViewDelegate,UITextViewDelegate,commentsRSSParserDelegate,UITableViewDataSource,UITableViewDelegate,commentsRSSParserDelegate>{
 
-    
-    
-    
-    
+        
     YTCommentsRSSParser *parser;
     
     NSMutableArray  *commentPosts;
@@ -34,16 +31,16 @@
     FBSession *session;
     
     
-@private
-    // for downloading the xml data
-    NSURLConnection *commentsFeedConnection;
-    NSMutableData *ytCommentData;    
-    NSOperationQueue *parseQueue;
+//@private
+//    // for downloading the xml data
+//    NSURLConnection *commentsFeedConnection;
+//    NSMutableData *ytCommentData;    
+//    NSOperationQueue *parseQueue;
 }
-
-@property (nonatomic, retain)NSURLConnection *commentsFeedConnection;
-@property (nonatomic, retain)NSMutableData *ytCommentData;
-@property (nonatomic, retain)NSOperationQueue *parseQueue;
+//
+//@property (nonatomic, retain)NSURLConnection *commentsFeedConnection;
+//@property (nonatomic, retain)NSMutableData *ytCommentData;
+//@property (nonatomic, retain)NSOperationQueue *parseQueue;
 
 
 @property (nonatomic, retain) UIWebView *mainWebView;
