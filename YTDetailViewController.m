@@ -37,12 +37,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-   // NSLog(@"YT HTML:%@",ythtml);
-    NSLog(@"Raw Vid:%@",entryDetail.rawID);
-    NSLog(@"Commenst Vid:%@",entryDetail.videoCommentsLink);
-    
+    //NSLog(@"YT HTML:%@",ythtml);
+    //NSLog(@"Raw Vid:%@",entryDetail.rawID);
+    //NSLog(@"Commenst Vid:%@",entryDetail.videoCommentsLink);
        
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     

@@ -15,8 +15,6 @@
 FBSession *session;
 }
 @property (strong, nonatomic) FBSession *session;
-
-- (void)startLocationManager;
 - (IBAction)showInfo:(id)sender;
 
 @end

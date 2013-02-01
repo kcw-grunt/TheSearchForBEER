@@ -30,8 +30,7 @@
 
 - (void)loadView
 {
-    
-    
+
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen
                                                   mainScreen].applicationFrame];
     UIImageView *posterView = [[UIImageView alloc] initWithFrame:[UIScreen

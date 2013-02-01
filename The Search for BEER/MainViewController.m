@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 
 
-@interface MainViewController ()<UINavigationControllerDelegate,CLLocationManagerDelegate>{
+@interface MainViewController ()<UINavigationControllerDelegate>{
 UITableView *_tableView;
 UISearchBar *_searchBarView;
     
@@ -28,9 +28,7 @@ NSMutableArray *ytArray;
     
 }
 @property (strong, nonatomic) FBUserSettingsViewController *settingsViewController;
-@property (strong, nonatomic) FBCacheDescriptor *placeCacheDescriptor;
 @property (strong, nonatomic) FBProfilePictureView *userProfileImage;
-@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UILabel   *userNameLabel;
 
 
@@ -47,30 +45,15 @@ NSMutableArray *ytArray;
 
 
 -(void)grabbingYouTubeResults:(NSString *)ytQuery;
--(void)setPlaceCacheDescriptorForCoordinates:(CLLocationCoordinate2D)coordinates;
 @end
 
 @implementation MainViewController
 @synthesize userNameLabel = _userNameLabel;
-@synthesize placeCacheDescriptor = _placeCacheDescriptor;
 @synthesize userProfileImage = _userProfileImage;
-@synthesize locationManager = _locationManager;
 @synthesize session;
 @synthesize _tableView,_searchBarView;
 @synthesize videos,sectionedVideos,videoCategories;
 @synthesize detailViewController,ytArray;
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
-
-
 
 - (void)viewDidLoad
 {
@@ -78,14 +61,7 @@ NSMutableArray *ytArray;
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Bartab Challenge", @"Bartab Challenge");
 
-    ////////////////////FB Blocks//////////////////////
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    // We don't want to be notified of small changes in location, preferring to use our
-    // last cached results, if any.
-    self.locationManager.distanceFilter = 50;
-    
+    //////////v/////////FB Blocks////////////v/////////
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sessionStateChanged:)
                                                  name:TSFBSessionStateChangedNotification
@@ -101,16 +77,10 @@ NSMutableArray *ytArray;
                  self.userProfileImage.profileID = [user objectForKey:@"id"];
              }
          }];
-        
-        
     }
-        
     //////////^/////////FB Blocks///////^//////////////
 
-    
-
-
-    
+        
     _searchBarView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     _searchBarView.barStyle = UIBarStyleBlackTranslucent;
     _searchBarView.placeholder = @"BEER";
@@ -162,41 +132,6 @@ NSMutableArray *ytArray;
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-}
-
-
-#pragma mark -
-#pragma mark CLLocationManagerDelegate methods
-
-- (void)startLocationManager {
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-    if (!oldLocation ||
-        (oldLocation.coordinate.latitude != newLocation.coordinate.latitude &&
-         oldLocation.coordinate.longitude != newLocation.coordinate.longitude &&
-         newLocation.horizontalAccuracy <= 100.0)) {
-            // Fetch data at this new location, and remember the cache descriptor.
-            [self setPlaceCacheDescriptorForCoordinates:newLocation.coordinate];
-            [self.placeCacheDescriptor prefetchAndCacheForSession:FBSession.activeSession];
-        }
-}
-
-- (void)setPlaceCacheDescriptorForCoordinates:(CLLocationCoordinate2D)coordinates {
-    //    self.placeCacheDescriptor =
-    //    [FBPlacePickerViewController cacheDescriptorWithLocationCoordinate:coordinates
-    //                                                        radiusInMeters:1000
-    //                                                            searchText:@"restaurant"
-    //                                                          resultsLimit:50
-    //                                                      fieldsForRequest:nil];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
-	NSLog(@"%@", error);
 }
 
 
@@ -333,14 +268,14 @@ NSMutableArray *ytArray;
         UIImageView *videoImageThumb;
         UILabel *videoTitle;
         UILabel *videoDescription;
-    
         UIFont *specialFont = [UIFont fontWithName:@"HandOfSean" size:11];
 
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kYTVideosCellID];
-        if (cell == nil) {
+            cell = nil;///Set all cells to nil because the old data is not cleared in the lower row
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellAccessoryDetailDisclosureButton
                                           reuseIdentifier:kYTVideosCellID];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
             /////////////Setting Up the Custom Cell subviews//////////
             videoImageThumb = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
             videoImageThumb.tag = kVideoImageTag;
@@ -361,7 +296,7 @@ NSMutableArray *ytArray;
             videoDescription.font = [UIFont systemFontOfSize:9];
             videoDescription.numberOfLines = 2;
             [cell.contentView addSubview:videoDescription];
-        }
+        
     
     /////////////Locating and filling the YTVideo with per the categories array  and or the videos within//////////
     /////Bonus!: Using FTWCache and a NSString Categories NSString+MD5. Open-Source Classes that improve scrolling with dynamic d/led images////
@@ -388,9 +323,8 @@ NSMutableArray *ytArray;
         }
     
         videoTitle.text = [[sectionArray objectAtIndex:indexPath.row]title];
-    //NSLog(@"video Cell T:%@",[[sectionArray objectAtIndex:indexPath.row]title]);
         videoDescription.text = [[sectionArray objectAtIndex:indexPath.row]videoDescription];
-    
+
     return cell;
 }
 
@@ -434,10 +368,15 @@ NSMutableArray *ytArray;
 
 - (IBAction)showInfo:(id)sender
 {    
-    FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
-    controller.delegate = self;
-    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:controller animated:YES completion:nil];
+//    FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
+//    controller.delegate = self;
+//    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:controller animated:YES completion:nil];
+    
+    
+    FlipsideViewController *svc = [[FlipsideViewController alloc] init];
+    svc.delegate = self;
+    [self.navigationController presentViewController:svc animated:YES completion:nil];
 }
 
 @end

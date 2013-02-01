@@ -43,15 +43,12 @@ NSString *const TSFBSessionStateChangedNotification = @"com.grunt-software.com.T
                       error:(NSError *)error
 {
     NSLog(@"Session Status: FBSessionState %@",[session description]);
-    
     sessionDict = (NSMutableDictionary *)session;
-    
     NSLog(@"Session Dict: FBSessionState %@",[sessionDict description]);
     
     
     switch (state) {
         case FBSessionStateOpen: {
-            [self.mainViewController startLocationManager];
 
             if (self.loginViewController != nil) {
                 UIViewController *topViewController = [self.navController topViewController];
